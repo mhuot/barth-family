@@ -17,7 +17,7 @@
    Map geometry: Natural Earth (public domain), pre-projected into inline SVG. */
 :root{
   --paper:#f6f7f4; --ink:#1f2a33; --muted:#5b6670; --rule:#d5dad6; --panel:#eceee9; --chip:#ffffff;
-  --bern:#9b2c2c; --alsace:#2f5d7c; --america:#3d6b48;
+  --bern:#b8361e; --alsace:#1f5fa8; --america:#9a6b00;
   --water:#dde5e7; --land:#eeede6; --coast:#a5afae; --border:#7f8b90; --admin:#c3c9c5;
   --river:#94b3c6; --maplabel:#86909a; --riverlabel:#55809b; --route:#1f2a33; --halo:#ffffff;
   --focus:#c27c0e;
@@ -27,14 +27,14 @@
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --paper:#151a1f; --ink:#e6e9e6; --muted:#a3acb3; --rule:#2e3740; --panel:#1d242b; --chip:#232b33;
-  --bern:#e07b7b; --alsace:#7fb2d6; --america:#8cc49a;
+  --bern:#ff7a59; --alsace:#5aa0ff; --america:#f2c94c;
   --water:#0f1519; --land:#1e252b; --coast:#3b4650; --border:#64717b; --admin:#323c45;
   --river:#3f6680; --maplabel:#7f8a93; --riverlabel:#7ea7c2; --route:#eef0ec; --halo:#151a1f;
   --focus:#f0b85a;
   color-scheme:dark } }
 :root[data-theme="dark"]{
   --paper:#151a1f; --ink:#e6e9e6; --muted:#a3acb3; --rule:#2e3740; --panel:#1d242b; --chip:#232b33;
-  --bern:#e07b7b; --alsace:#7fb2d6; --america:#8cc49a;
+  --bern:#ff7a59; --alsace:#5aa0ff; --america:#f2c94c;
   --water:#0f1519; --land:#1e252b; --coast:#3b4650; --border:#64717b; --admin:#323c45;
   --river:#3f6680; --maplabel:#7f8a93; --riverlabel:#7ea7c2; --route:#eef0ec; --halo:#151a1f;
   --focus:#f0b85a;
@@ -288,7 +288,7 @@ em.unsure{ font-style:italic; color:var(--muted); }
     <td data-label="Where he lived">Detligen, parish of Radelfingen, near Aarberg, canton Bern</td>
     <td data-label="Church">Reformed (the Swiss Protestant church of Bern)</td>
     <td data-label="Language">Bernese Swiss German</td>
-    <td data-label="Belonged to">Subject of the city-state of Bern, Swiss Confederation<span class="small">Known only as the father named in his son's records. Radelfingen's own registers before 1831 are lost.</span></td>
+    <td data-label="Belonged to">Subject of the city-state of Bern, Swiss Confederation<span class="small">Known only as the father named in his sons' marriage records, Peter's in 1687 and Benedict's in 1698, by which time he had died. Radelfingen's own registers before 1831 are lost.</span></td>
   </tr>
   <tr class="bern" data-gen="2">
     <td class="gen">2</td>
@@ -367,7 +367,7 @@ em.unsure{ font-style:italic; color:var(--muted); }
 <ul class="places">
   <li class="c-bern" id="place-detligen" data-region="bern" data-view="alsace" data-name="Detligen">
     <h3>Detligen</h3><p class="where">Parish of Radelfingen, near Aarberg, canton Bern</p>
-    <p>Home of Peter Barth (generation 1) and birthplace of his son Peter (generation 2). The registers call the son "of Detligen, Bernese territory" in 1687 and again in 1688. Radelfingen's own registers before 1831 are lost.</p>
+    <p>Home of Peter Barth (generation 1) and birthplace of his son Peter (generation 2). The registers call the son "of Detligen, Bernese territory" in 1687 and again in 1688. Two more Detligen Barths married at Quatzenheim: Hieronymus, a weaver, son of the late Niclaus Barth, tailor and burgher of Detligen, in 1688, and Benedict, a smith, "born at Dettlicken" and son of the late Peter Barth, in 1698. Benedict was very likely the younger Peter's brother; he later lived at Kolbsheim. Radelfingen's own registers before 1831 are lost.</p>
   </li>
   <li class="c-bern" id="place-rothrist" data-region="bern" data-view="alsace" data-name="Rothrist">
     <h3>Rothrist (then Niederwil)</h3><p class="where">Then Bernese territory</p>
@@ -383,7 +383,7 @@ em.unsure{ font-style:italic; color:var(--muted); }
   </li>
   <li class="c-alsace" id="place-wolfisheim" data-region="alsace" data-view="alsace" data-name="Wolfisheim">
     <h3>Wolfisheim</h3><p class="where">Near Strasbourg</p>
-    <p>Birthplace in 1775 of Anne Scheer (Scherer), who married Michel Barth in 1804.</p>
+    <p>Birthplace on 20 May 1775 of Anne Scheer (Schaar, Scherer), who married Michel Barth in 1804. Her parents, Lorentz Schaar and Anna Heitz, were both children of Wolfisheim farmers and married there in 1773.</p>
   </li>
   <li class="c-alsace" id="place-schwindratzheim" data-region="alsace" data-view="alsace" data-name="Schwindratzheim">
     <h3>Schwindratzheim</h3><p class="where">Alsace</p>
@@ -413,9 +413,9 @@ em.unsure{ font-style:italic; color:var(--muted); }
   <li data-gen="2"><b>Barbara Jäggi</b>, married Peter 1687. Daughter of Ulrich Jäggi of Niederwil (now Rothrist), then Bernese territory. Swiss Reformed.</li>
   <li data-gen="3"><b>Catharina Hans</b>, married Jacob 1716. Born 1687 at Quatzenheim, daughter of Jacob Hans and Gertrud.</li>
   <li data-gen="3"><b>Catharina Martzloff</b>, Jacob's second wife, 1730. Daughter of Michael Martzloff, farmer, and Brigitta.</li>
-  <li data-gen="4"><b>Margaretha Schwebel</b>, married Valentin 1743. Daughter of Michael Schwebel, farmer, of a village not yet read with certainty.</li>
-  <li data-gen="5"><b>Anna Rohfritsch</b>, married Valentin 1765. Of Quatzenheim, daughter of Andreas Rohfritsch and Anna Brumter.</li>
-  <li data-gen="6"><b>Anne Scheer</b> (Scherer), married Michel 1804. Born 1775 at Wolfisheim, near Strasbourg.</li>
+  <li data-gen="4"><b>Margaretha Schwebel</b>, married Valentin 1743. Daughter of the late Michael Schwebel, burgher and farmer of a place written "Danstatt" or "Darstatt", perhaps Dannstadt in the Palatinate or Darmstadt, not yet identified. Born about June 1710, died 1759 at Quatzenheim.</li>
+  <li data-gen="5"><b>Anna Rohfritsch</b>, married Valentin 1765. Born 13 December 1743 at Quatzenheim, daughter of Andreas Rohfritsch and Anna Brumter of Furdenheim.</li>
+  <li data-gen="6"><b>Anne Scheer</b> (Scherer), married Michel 1804. Born 20 May 1775 at Wolfisheim, near Strasbourg, daughter of Lorentz Schaar, a day labourer, and Anna Heitz.</li>
   <li data-gen="7"><b>Marie Wendling</b>, married Jean 1833. Born 1813 at Schwindratzheim.</li>
   <li data-gen="8"><b>Margaretha Matter</b>, married John 1860. Born 1842 at Ingenheim, Alsace, <em class="unsure">per the 1996 Winneshiek County family history</em>.</li>
   <li data-gen="9"><b>Louise Anna Kern</b>, married Charles 1898. Born in Minnesota in 1878 to German-speaking parents.</li>
@@ -455,7 +455,7 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
   var VIEWS = {
     alsace:   [[46.80, 6.95], [48.90, 8.15]],
     atlantic: [[37.0, -96.0], [53.0, 13.0]],
-    all:      [[37.0, -96.0], [53.0, 13.0]],
+    all:      [[37.0, -101.0], [53.0, 13.0]],
     iowa:     [[43.20, -92.25], [43.78, -91.55]]
   };
   // The places each man is tied to in the records on this page, and where the map goes for him
