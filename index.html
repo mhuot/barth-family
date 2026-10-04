@@ -79,6 +79,8 @@ button{ font:inherit; color:inherit; }
 .views button{ background:var(--chip); border:0; border-right:1px solid var(--rule); padding:9px 14px; min-height:44px; cursor:pointer; font-size:14px; }
 .views button:last-child{ border-right:0; }
 .views button[aria-pressed="true"]{ background:var(--ink); color:var(--paper); }
+.views button.reset{ background:var(--paper); color:var(--muted); }
+.views button.reset:hover{ color:var(--ink); }
 @media (max-width:480px){ .views{ width:100%; } .views button{ flex:1 1 0; padding:8px 6px; font-size:13px; line-height:1.25; } }
 
 .map{ position:relative; border:1px solid var(--rule); border-radius:6px; overflow:hidden; background:var(--water); }
@@ -251,6 +253,7 @@ em.unsure{ font-style:italic; color:var(--muted); }
       <button data-view="alsace" aria-pressed="false">Bern and Alsace</button>
       <button data-view="atlantic" aria-pressed="true">The Atlantic</button>
       <button data-view="iowa" aria-pressed="false">Iowa and Minnesota</button>
+      <button type="button" id="mapreset" class="reset" aria-label="Reset the map to the whole journey">&#8634; Reset map</button>
     </div>
     <div class="map">
       <div id="map" role="region" aria-label="Map of the family's places. Pins are buttons; the same places are listed below the map."></div>
@@ -474,7 +477,7 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
   var NAMES = { 1:"Peter", 2:"Peter", 3:"Jacob", 4:"Valentin", 5:"Valentin", 6:"Michel", 7:"Jean", 8:"John", 9:"Charles" };
 
   var card = $("#card"), note = $("#placenote"), btnList = $("#placebtns");
-  var cardIntro = card.innerHTML;
+  var cardIntro = card.innerHTML, noteIntro = note.innerHTML;
   var state = { gen:0, view:"atlantic", place:null };
   function placeLi(id){ return document.getElementById("place-" + id); }
   function nameOf(id){ var li = placeLi(id); return li ? li.getAttribute("data-name") : id; }
@@ -704,7 +707,14 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
       setGen(n); $('.gen-chip[data-gen="' + n + '"]').focus();
     });
   });
-  $$(".views button").forEach(function(b){ b.addEventListener("click", function(){ goView(b.getAttribute("data-view")); }); });
+  $$(".views button[data-view]").forEach(function(b){ b.addEventListener("click", function(){ goView(b.getAttribute("data-view")); }); });
+  // Reset: back to the whole journey, no generation or place chosen
+  var resetBtn = $("#mapreset");
+  if (resetBtn) resetBtn.addEventListener("click", function(){
+    state.place = null;
+    note.innerHTML = noteIntro;
+    setGen(0);
+  });
   $$("tbody tr").forEach(function(tr){
     var g = +tr.getAttribute("data-gen"), b = document.createElement("button");
     b.type = "button"; b.className = "tomap"; b.textContent = "Show on map";
