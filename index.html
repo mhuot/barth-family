@@ -251,7 +251,7 @@ em.unsure{ font-style:italic; color:var(--muted); }
     </ul>
     <div class="views" role="group" aria-label="Map view">
       <button data-view="alsace" aria-pressed="false">Bern and Alsace</button>
-      <button data-view="atlantic" aria-pressed="true">The Atlantic</button>
+      <button data-view="atlantic" aria-pressed="false">The Atlantic</button>
       <button data-view="iowa" aria-pressed="false">Iowa and Minnesota</button>
       <button type="button" id="mapreset" class="reset" aria-label="Reset the map to the whole journey">&#8634; Reset map</button>
     </div>
@@ -455,6 +455,7 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
   var VIEWS = {
     alsace:   [[46.80, 6.95], [48.90, 8.15]],
     atlantic: [[37.0, -96.0], [53.0, 13.0]],
+    all:      [[37.0, -96.0], [53.0, 13.0]],
     iowa:     [[43.20, -92.25], [43.78, -91.55]]
   };
   // The places each man is tied to in the records on this page, and where the map goes for him
@@ -472,13 +473,14 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
   var VIEW_PLACES = {
     alsace:["detligen","rothrist","strasbourg","quatzenheim","wolfisheim","schwindratzheim"],
     atlantic:["stratford"],
+    all:["detligen","rothrist","strasbourg","quatzenheim","wolfisheim","schwindratzheim","stratford","locust","decorah","preston"],
     iowa:["locust","decorah","preston"]
   };
   var NAMES = { 1:"Peter", 2:"Peter", 3:"Jacob", 4:"Valentin", 5:"Valentin", 6:"Michel", 7:"Jean", 8:"John", 9:"Charles" };
 
   var card = $("#card"), note = $("#placenote"), btnList = $("#placebtns");
   var cardIntro = card.innerHTML, noteIntro = note.innerHTML;
-  var state = { gen:0, view:"atlantic", place:null };
+  var state = { gen:0, view:"all", place:null };
   function placeLi(id){ return document.getElementById("place-" + id); }
   function nameOf(id){ var li = placeLi(id); return li ? li.getAttribute("data-name") : id; }
   function regionOf(id){ var li = placeLi(id); return li ? li.getAttribute("data-region") : "alsace"; }
@@ -517,7 +519,7 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
       attributionControl: true
     });
     map.attributionControl.setPrefix("Leaflet");
-    map.fitBounds(VIEWS.atlantic, { animate:false });
+    map.fitBounds(VIEWS.all, { animate:false });
     map.createPane("fallback").style.zIndex = 150;
     var fbRenderer = L.svg({ pane: "fallback" });
     var G = window.FALLBACK_GEO;
@@ -685,7 +687,7 @@ window.FALLBACK_GEO={"land":{"type":"MultiPolygon","coordinates":[[[[-81.33,24.6
     var G = g ? GENS[g] : null;
     var bounds = null;
     if (G && G.fit && hasL) bounds = L.latLngBounds(G.places.map(function(k){ return PLACES[k].ll; })).pad(0.6);
-    goView(G ? G.view : "atlantic", bounds);
+    goView(G ? G.view : "all", bounds);
     paint();
   }
 
